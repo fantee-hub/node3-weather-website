@@ -11,15 +11,13 @@ weatherForm.addEventListener("submit", (e) => {
 
   messageOne.textContent = "Loading Weather info...";
   messageTwo.textContent = "";
-  fetch(`http://localhost:3000/weather?address=${inputValue}`).then((res) => {
+  fetch(`/weather?address=${inputValue}`).then((res) => {
     res.json().then((data) => {
       if (data.error) {
         messageOne.textContent = data.error;
       } else {
         messageOne.textContent = data.weatherInfo;
         messageTwo.textContent = data.location;
-        // console.log(data.weatherInfo);
-        // console.log(data.location);
       }
     });
   });

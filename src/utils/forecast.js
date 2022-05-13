@@ -9,8 +9,15 @@ const forecast = (lat, long, callback) => {
       callback("unable to fetch locations", undefined);
     } else {
       const temperatureInCelcius = body.main.temp - 273.15;
+      const tempmax = body.main.temp_max - 273.15;
+      const templow = body.main.temp_min - 273.15;
+      console.log(body.main);
       callback(undefined, {
-        info: `It is currently ${temperatureInCelcius.toFixed(2)} degrees out`,
+        info: `It is currently ${temperatureInCelcius.toFixed(
+          2
+        )} degrees out. This high today is ${tempmax.toFixed(
+          2
+        )} with a low of ${templow.toFixed(2)}`,
       });
     }
   });
